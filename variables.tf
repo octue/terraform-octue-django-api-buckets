@@ -10,24 +10,24 @@ variable "project" {
 
 
 variable "resource_affix" {
-  type = string
+  type    = string
   default = "bezier"
 }
 
 
 variable "environment" {
-  type = string
+  type    = string
   default = "main"
 }
 
 
 variable "create_public_bucket" {
-  type = bool
+  type    = bool
   default = false
 }
 
 
 variable "deletion_protection" {
-  type = bool
+  type    = bool
   default = false
 }

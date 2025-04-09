@@ -19,17 +19,17 @@ resource "google_storage_bucket" "static_assets" {
 
 # Make static bucket contents public.
 resource "google_storage_bucket_iam_member" "static_assets_object_viewer" {
-  bucket  = google_storage_bucket.static_assets.name
-  role    = "roles/storage.objectViewer"
-  member  = "allUsers"
+  bucket = google_storage_bucket.static_assets.name
+  role   = "roles/storage.objectViewer"
+  member = "allUsers"
 }
 
 
 # Allow the server to administer what's on the staging bucket
 resource "google_storage_bucket_iam_member" "static_assets_object_admin" {
-  bucket  = google_storage_bucket.static_assets.name
-  role    = "roles/storage.objectAdmin"
-  member  = "serviceAccount:${var.server_service_account_email}"
+  bucket = google_storage_bucket.static_assets.name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${var.server_service_account_email}"
 }
 
 
@@ -56,15 +56,15 @@ resource "google_storage_bucket" "private_assets" {
 
 resource "google_storage_bucket_iam_member" "private_assets_object_admin" {
   bucket = google_storage_bucket.private_assets.name
-  role = "roles/storage.objectAdmin"
-  member  = "serviceAccount:${var.server_service_account_email}"
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${var.server_service_account_email}"
 }
 
 
 # PUBLIC BUCKET (OPTIONAL)
 ##########################
 resource "google_storage_bucket" "public_assets" {
-  count = var.create_public_bucket ? 1 : 0
+  count                       = var.create_public_bucket ? 1 : 0
   name                        = "${var.resource_affix}--public-assets--${var.environment}"
   location                    = "EU"
   force_destroy               = !var.deletion_protection
@@ -81,17 +81,17 @@ resource "google_storage_bucket" "public_assets" {
 
 # Make public bucket contents public.
 resource "google_storage_bucket_iam_member" "public_assets_object_viewer" {
-  count = var.create_public_bucket ? 1 : 0
-  bucket  = google_storage_bucket.public_assets[0].name
-  role    = "roles/storage.objectViewer"
-  member  = "allUsers"
+  count  = var.create_public_bucket ? 1 : 0
+  bucket = google_storage_bucket.public_assets[0].name
+  role   = "roles/storage.objectViewer"
+  member = "allUsers"
 }
 
 
 # Allow the server to administer what's on the public bucket.
 resource "google_storage_bucket_iam_member" "public_assets_object_admin" {
-  count = var.create_public_bucket ? 1 : 0
-  bucket  = google_storage_bucket.public_assets[0].name
-  role    = "roles/storage.objectAdmin"
-  member  = "serviceAccount:${var.server_service_account_email}"
+  count  = var.create_public_bucket ? 1 : 0
+  bucket = google_storage_bucket.public_assets[0].name
+  role   = "roles/storage.objectAdmin"
+  member = "serviceAccount:${var.server_service_account_email}"
 }

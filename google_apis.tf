@@ -6,9 +6,9 @@ locals {
 
 
 resource "google_project_service" "services" {
-  for_each = local.services
-  project = var.project
-  service = each.value
+  for_each           = local.services
+  project            = var.project
+  service            = each.value
   disable_on_destroy = false
 
   timeouts {
