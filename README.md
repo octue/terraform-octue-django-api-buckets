@@ -63,8 +63,8 @@ terraform {
 
 
 provider "google" {
-  project     = var.project
-  region      = var.region
+  project     = var.google_cloud_project_id
+  region      = var.google_cloud_region
 }
 
 
@@ -77,8 +77,8 @@ locals {
 
 module "octue_django_api" {
   source = "git::github.com/octue/terraform-octue-django-api.git?ref=0.1.0"
-  project = var.project
-  region = var.region
+  project = var.google_cloud_project_id
+  region = var.google_cloud_region
   resource_affix = var.resource_affix
   environment = local.environment
 }
@@ -87,7 +87,7 @@ module "octue_django_api" {
 module "octue_django_api_buckets" {
   source = "git::github.com/octue/terraform-octue-django-api-buckets.git?ref=0.1.0"
   server_service_account_email = module.octue_django_api.server_service_account.email
-  project = var.project
+  project = var.google_cloud_project_id
   resource_affix = var.resource_affix
   environment = local.environment
 }
@@ -96,13 +96,13 @@ module "octue_django_api_buckets" {
 ```terraform
 # variables.tf
 
-variable "project" {
+variable "google_cloud_project_id" {
   type    = string
   default = "<your-google-project-id>"
 }
 
 
-variable "region" {
+variable "google_cloud_region" {
   type    = string
   default = "<your-google-project-region>"
 }
