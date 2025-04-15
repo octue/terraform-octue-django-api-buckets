@@ -6,14 +6,12 @@ variable "server_service_account_email" {
 
 variable "project" {
   type        = string
-  default     = "bezier-app"
   description = "The ID of the GCP project to deploy resources in."
 }
 
 
 variable "resource_affix" {
   type        = string
-  default     = "bezier"
   description = "The affix to add to each resource controlled by this module."
 }
 
