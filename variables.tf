@@ -4,7 +4,7 @@ variable "server_service_account_email" {
 }
 
 
-variable "project" {
+variable "google_cloud_project_id" {
   type        = string
   description = "The ID of the GCP project to deploy resources in."
 }
