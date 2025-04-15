@@ -102,12 +102,6 @@ variable "google_cloud_project_id" {
 }
 
 
-variable "google_cloud_region" {
-  type    = string
-  default = "<your-google-project-region>"
-}
-
-
 variable "resource_affix" {
   type    = string
   default = "<name-of-your-api>"
