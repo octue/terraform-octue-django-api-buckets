@@ -4,6 +4,12 @@ variable "server_service_account_email" {
 }
 
 
+variable "github_actions_service_account_email" {
+  type = string
+  description = "The email address of the GitHub Actions service account."
+}
+
+
 variable "google_cloud_project_id" {
   type        = string
   description = "The ID of the GCP project to deploy resources in."

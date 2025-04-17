@@ -144,14 +144,15 @@ terraform destroy
 
 # Input reference
 
-| Name                           | Type       | Required | Default    |
-|--------------------------------|------------|----------|------------| 
-| `server_service_account_email` | `string`   | Yes      | N/A        |  
-| `google_cloud_project_id`      | `string`   | Yes      | N/A        |  
-| `resource_affix`               | `string`   | Yes      | N/A        |                 
-| `environment`                  | `string`   | No       | `"main"`   |     
-| `create_public_bucket`         | `boolean`  | No       | `false`    |     
-| `deletion_protection`          | `bool`     | No       | `true`     | 
+| Name                                   | Type       | Required | Default    |
+|----------------------------------------|------------|----------|------------| 
+| `server_service_account_email`         | `string`   | Yes      | N/A        |  
+| `github_actions_service_account_email` | `string`   | Yes      | N/A        |  
+| `google_cloud_project_id`              | `string`   | Yes      | N/A        |  
+| `resource_affix`                       | `string`   | Yes      | N/A        |                 
+| `environment`                          | `string`   | No       | `"main"`   |     
+| `create_public_bucket`                 | `boolean`  | No       | `false`    |     
+| `deletion_protection`                  | `bool`     | No       | `true`     | 
 
 See [`variables.tf`](/variables.tf) for descriptions.
 

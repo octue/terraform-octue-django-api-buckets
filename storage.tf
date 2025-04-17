@@ -25,11 +25,17 @@ resource "google_storage_bucket_iam_member" "static_assets_object_viewer" {
 }
 
 
-# Allow the server to administer what's on the staging bucket
+# Allow the server to administer what's on the static bucket.
 resource "google_storage_bucket_iam_member" "static_assets_object_admin" {
+  for_each = toset(
+    [
+      "serviceAccount:${var.server_service_account_email}",
+      "serviceAccount:${var.github_actions_service_account_email}"
+    ]
+  )
   bucket = google_storage_bucket.static_assets.name
   role   = "roles/storage.objectAdmin"
-  member = "serviceAccount:${var.server_service_account_email}"
+  member = each.value
 }
 
 
